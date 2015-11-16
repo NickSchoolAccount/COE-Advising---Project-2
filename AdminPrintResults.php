@@ -26,7 +26,7 @@ $debug = false;
 	$date = $_POST["date"];
 	$type = $_POST["type"];
 			
-	include('../CommonMethods.php');
+	include('CommonMethods.php');
 	$COMMON = new Common($debug);
 
 

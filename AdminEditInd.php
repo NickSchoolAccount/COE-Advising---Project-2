@@ -24,7 +24,7 @@ session_start();
 		  
           <?php
             $debug = false;
-            include('../CommonMethods.php');
+            include('CommonMethods.php');
             $COMMON = new Common($debug);
 
             $sql = "SELECT * FROM `Proj2Appointments` WHERE `AdvisorID` != '0' and `Time` > '".date('Y-m-d H:i:s')."' ORDER BY `Time`";

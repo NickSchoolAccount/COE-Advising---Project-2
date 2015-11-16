@@ -27,7 +27,7 @@ $debug = false;
           $group = $_SESSION["GroupApp"];
           parse_str($group);
  
-          include('../CommonMethods.php');
+          include('CommonMethods.php');
           $COMMON = new Common($debug);
 
           if($delete == true){

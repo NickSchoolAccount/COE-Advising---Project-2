@@ -23,7 +23,7 @@ session_start();
 		  <div class="field">
           <?php
             $debug = false;
-            include('../CommonMethods.php');
+            include('CommonMethods.php');
             $COMMON = new Common($debug);
 
             $group = $_SESSION["GroupApp"];

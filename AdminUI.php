@@ -4,7 +4,7 @@ $debug = false;
 
 if($debug) { echo("Session variables-> ".var_dump($_SESSION)); }
 
-include('../CommonMethods.php');
+include('CommonMethods.php');
 $COMMON = new Common($debug);
 $_SESSION["PassCon"] = false;
 ?>

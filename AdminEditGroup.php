@@ -25,7 +25,7 @@ $_SESSION["Delete"] = false;
 		  <div class="field">
           <?php
             $debug = false;
-            include('../CommonMethods.php');
+            include('CommonMethods.php');
             $COMMON = new Common($debug);
 
             $sql = "SELECT * FROM `Proj2Appointments` WHERE `AdvisorID` = '0' ORDER BY `Time`";
