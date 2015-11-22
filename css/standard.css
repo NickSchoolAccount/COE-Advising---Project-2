@@ -2,7 +2,7 @@ html{
       background-color: 
       #000066; 
       font-family: Arial; 
-      font-size: 13px; 
+      font-size: 18px;
       position: relative;
       }
 
@@ -26,7 +26,7 @@ html{
       margin: 100px auto 0; 
       padding: 20px 20px 20px; 
       position: relative; 
-      width: 1000px; 
+      width: 850px; 
       -webkit-border-radius: 8px; 
       -moz-border-radius: 8px; 
       border-radius: 8px; 
@@ -43,13 +43,19 @@ html{
 	  
       h2{ 
       font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; 
-      font-size: 24px; 
-	  text-align: center;
+      font-size: 30px; 
+	text-align: center;
       line-height: 30px; 
-      margin: 10; 
       padding: 0;
+	margin: 20px;
       color: #464; 
       }
+
+	h3{
+	font-size: 30px;
+	position: relative;
+	left: 100px;
+	}
 
       ul{ 
       margin: 8px 20px; 
@@ -61,7 +67,7 @@ html{
       }
       
       input[type="text"],input[type="email"], textarea {
-        background-color: #F6F6F6;
+        background-color: #FFFFFF;
         border: 1px solid #999;
         color: #444;
         font-family: Arial, Helvetica, sans-serif;
@@ -90,7 +96,7 @@ html{
         height: 25px;
         overflow: visible;
         padding: 0 12px;
-        margin: 5px auto 0;
+        margin: 25px auto 0;
         text-decoration: none;
         vertical-align: top;
         white-space: nowrap;
@@ -131,14 +137,17 @@ html{
        
       .field{ 
       margin: 8px 0;
-	position: relative;
-	left: 120px;
+      position: relative;
+      left: 140px;
       }
 
       .field label{ 
       display: block; 
       font-weight: bold; 
-      font-size: 25px;
+      font-size: 28px;
+	margin: 12 0px;
+	position: relative;
+      right: 40px;
       }
 	  
       .actions{ 
@@ -154,7 +163,7 @@ html{
 
       .top{ 
       border-bottom: 1px solid #eee; 
-      padding-bottom: 12px; 
+      padding-bottom: 12px;
       }
 
       .actions{ 
