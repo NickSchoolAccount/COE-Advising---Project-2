@@ -15,7 +15,7 @@ else{
 	$email = $_SESSION["email"];
 	$advisor = $_SESSION["advisor"];
 
-	if(debug) { echo("Advisor -> $advisor<br>\n"); }
+	//if(debug) { echo("Advisor -> $advisor<br>\n"); }
 
 	$apptime = $_SESSION["appTime"];
 	if($_SESSION["studExist"] == false){
