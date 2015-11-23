@@ -43,12 +43,12 @@ html{
 	  
       h2{ 
       font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; 
-      font-size: 30px; 
+      font-size: 32px; 
 	text-align: center;
       line-height: 30px; 
       padding: 0;
 	margin: 20px;
-      color: #464; 
+      color: #444; 
       }
 
 	h3{
@@ -96,7 +96,7 @@ html{
         height: 25px;
         overflow: visible;
         padding: 0 12px;
-        margin: 25px auto 0;
+	margin: 10px 200;
         text-decoration: none;
         vertical-align: top;
         white-space: nowrap;
@@ -123,12 +123,14 @@ html{
         height: 40px;
         padding: 0 16px;
 	position: center;
+	margin: 10px 200;
       }
       
       .button.go {
         background-color: #66AA44;
         color: #FFF;
       }
+
       
       .button.go:hover {
         background-color: #70B74E;
@@ -136,18 +138,16 @@ html{
       }
        
       .field{ 
-      margin: 8px 0;
-      position: relative;
-      left: 140px;
+      margin: 8px 150;
       }
 
       .field label{ 
       display: block; 
       font-weight: bold; 
       font-size: 28px;
-	margin: 12 0px;
-	position: relative;
-      right: 40px;
+	margin: 12 -100px;
+	text-align: left;
+	color: #621;
       }
 	  
       .actions{ 
@@ -186,6 +186,13 @@ html{
       font-size: 16px; 
       font-weight: normal; 
       }
+
+	.nextButton {
+	text-align: center; }
+
+	.returnButton {
+	text-align: center;
+	}
     
       @media screen and (max-width: 767px){
         html, body { background-color: #fff; }
