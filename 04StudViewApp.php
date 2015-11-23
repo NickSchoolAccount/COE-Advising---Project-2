@@ -53,7 +53,7 @@ $studID = $_SESSION["studID"];
 
 		?>
         </div>
-	    <div class="finishButton">
+	    <div class="returnButton">
 			<button onclick="location.href = '02StudHome.php'" class="button large go" >Return to Home</button>
 	    </div>
 		</div>

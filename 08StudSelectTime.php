@@ -71,7 +71,9 @@ $advisorName = $row[1]." ".$row[2];
 		</form>
 		<div>
 		<form method="link" action="02StudHome.php">
+		<div class="nextButton">
 		<input type="submit" name="home" class="button large" value="Cancel">
+		</div>
 		</form>
 		</div>
 		<div class="bottom">

@@ -33,9 +33,11 @@ $COMMON = new Common($debug);
 		</div>
 		</form>
 		<div>
+		<div class="nextButton">
 		<form method="link" action="02StudHome.php">
 		<input type="submit" name="home" class="button large" value="Cancel">
 		</form>
+		</div>
 		</div>
   </body>
 </html>

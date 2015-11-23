@@ -73,7 +73,7 @@ $_SESSION["appTime"] = $_POST["appTime"]; // radio button selection from previou
 				echo "<input type='submit' name='finish' class='button large go' value='Submit'>";
 			}
 		?>
-			<input style="margin-left: 50px" type="submit" name="finish" class="button large" value="Cancel">
+			<input type="submit" name="finish" class="button large" value="Cancel">
 	    </div>
 		</form>
 		</div>
