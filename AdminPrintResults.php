@@ -53,8 +53,10 @@ $debug = false;
 
 ?>
 	<form method="link" action="AdminUI.php">
+	<div class="nextButton">
 	<input type="submit" name="next" class="button large go" value="Return to Home">
 	<input type="button" name="print" class="button large go" value="Print" onClick="window.print()">
+	</div>
 	</form>
 
 	</div>

@@ -27,7 +27,9 @@ session_start();
 	<br>
 	<br>
 	<form method="link" action="AdminUI.php">
+	<div class="nextButton">
 	<input type="submit" name="next" class="button large go" value="Return to Home">
+	</div>
 	</form>
          
         </div>
