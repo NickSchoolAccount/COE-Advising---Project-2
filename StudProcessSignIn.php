@@ -1,11 +1,22 @@
 <?php
 session_start();
+$debug = false;
+include('CommonMethods.php');
+$COMMON = new Common($debug);
 
-$_SESSION["firstN"] = strtoupper($_POST["firstN"]);
-$_SESSION["lastN"] = strtoupper($_POST["lastN"]);
-$_SESSION["studID"] = strtoupper($_POST["studID"]);
-$_SESSION["email"] = $_POST["email"];
-$_SESSION["major"] = $_POST["major"];
+// Replaced assignment to session variables with temporary variables- used in upcoming sql query to add to Proj2Students table
+
+$firstN = strtoupper($_POST["firstN"]);
+$lastN = strtoupper($_POST["lastN"]);
+$_SESSION["studID"] = strtoupper($_POST["studID"]);		// Only one session variable necessary to access all student information
+$studID = $_SESSION["studID"];
+$email = $_POST["email"];
+$major = $_POST["major"];
+
+// My addition to actually put a student who logs in into the database- necessary to avoid use of extra session variables
+
+$sql = "insert into `Proj2Students`(`FirstName`, `LastName`, `StudentID`, `Email`, `Major`) values ('$firstN','$lastN','$studID','$email','$major')";
+$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
 header('Location: 02StudHome.php');
 ?>

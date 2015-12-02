@@ -1,7 +1,7 @@
 <?php
 session_start();
 $debug = false;
-include('CommonMethods.php');
+include('GetStudentData.php');
 $COMMON = new Common($debug);
 ?>
 
@@ -18,11 +18,11 @@ $COMMON = new Common($debug);
 		<h1>Cancel Appointment</h1>
 	    <div class="field">
 	    <?php
-			$firstn = $_SESSION["firstN"];
-			$lastn = $_SESSION["lastN"];
+			$firstn = getFirstName();
+			$lastn = getLastName();
 			$studid = $_SESSION["studID"];
-			$major = $_SESSION["major"];
-			$email = $_SESSION["email"];
+			$major = getMajor();
+			$email = getEmail();
 			
 			$sql = "select * from Proj2Appointments where `EnrolledID` like '%$studid%'";
 			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
