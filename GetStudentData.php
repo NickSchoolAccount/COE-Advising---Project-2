@@ -9,7 +9,7 @@ include('CommonMethods.php');
 	*/
 
 
-function getStudExist($studID) {
+function getStudExist() {
 	$COMMON = new Common($debug);
 	$sID = $_SESSION["studID"];
 
@@ -36,7 +36,7 @@ function getFirstName() {
 	return $name;
 }	
 
-function getLastName($studID) {
+function getLastName() {
 	$COMMON = new Common($debug);
 	$sID = $_SESSION["studID"];
 
@@ -48,7 +48,7 @@ function getLastName($studID) {
 	return $name;
 }	
 
-function getEmail($studID) {
+function getEmail() {
 	$COMMON = new Common($debug);
 	$sID = $_SESSION["studID"];
 
@@ -59,7 +59,7 @@ function getEmail($studID) {
 	return $row[4];
 }
 	
-function getMajor($studID) {
+function getMajor() {
 	$COMMON = new Common($debug);
 	$sID = $_SESSION["studID"];
 
@@ -70,7 +70,7 @@ function getMajor($studID) {
 	return $row[5];
 }
 
-function getStatus($studID) {
+function getStatus() {
 	$COMMON = new Common($debug);
 	$sID = $_SESSION["studID"];
 
@@ -79,6 +79,17 @@ function getStatus($studID) {
 	$row = mysql_fetch_row($rs);
 
 	return $row[6];
+}
+
+function getAdvisor() {
+	$COMMON = new Common($debug);
+	$sID = $_SESSION["studID"];
+
+	$sql = "select * from Proj2Students where `StudentID` = '$sID'";
+	$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+	$row = mysql_fetch_row($rs);
+
+	return $row[7];
 }
 
 ?>			
