@@ -1,5 +1,8 @@
 <?php
   session_start();
+  include('GetAdvisorData.php');
+  $debug = false;
+  $COMMON = new Common($debug);
 ?>
 
 <!DOCTYPE html>
@@ -22,26 +25,37 @@
 		<h2>New Advisor has been created:</h2>
 
 		<?php
-			$first = $_SESSION["AdvF"];
-			$last = $_SESSION["AdvL"];
-			$user = $_SESSION["AdvUN"];
-			$pass = $_SESSION["AdvPW"];
+			// Get added advisor's data without overwriting $_SESSION["userID"]
 
-			include('CommonMethods.php');
-			$debug = false;
-			$Common = new Common($debug);
+			$sql = "SELECT * FROM `Proj2Advisors` WHERE `New` = 'true'";
+      			$rs = $COMMON->executeQuery($sql, "Advising Appointments");
+      			$row = mysql_fetch_row($rs);
 
-      $sql = "SELECT * FROM `Proj2Advisors` WHERE `Username` = '$user' AND `FirstName` = '$first' AND  `LastName` = '$last'";
-      $rs = $Common->executeQuery($sql, "Advising Appointments");
-      $row = mysql_fetch_row($rs);
-      if($row){
+			$id = $row[0];
+			$first = $row[1];
+			$last = $row[2];
+			$user = $row[3];
+			$pass = $row[4];
+
+
+	// New advisor was added to table regardless of whether an equivalent advisor already existed: if there are two
+	// advisors with the same data, the new one will be deleted
+
+	$sql = "SELECT * FROM `Proj2Advisors` WHERE `Username` = '$user' AND `FirstName` = '$first' AND  `LastName` = '$last'";
+	$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+	$num_rows = mysql_num_rows($rs);
+
+      if($num_rows == 2){
         echo("<h3>Advisor $first $last already exists</h3>");
+	
+	$sql = "DELETE FROM `Proj2Advisors` WHERE `id` = '$id'";
+	$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
       }
       else{
-  			$sql = "INSERT INTO `Proj2Advisors`(`FirstName`, `LastName`, `Username`, `Password`) 
-  			VALUES ('$first', '$last', '$user', '$pass')";
-        echo ("<h3>$first $last<h3>");
-        $rs = $Common->executeQuery($sql, "Advising Appointments");
+	echo ("<h3>$first $last<h3>");
+
+	$sql = "UPDATE `Proj2Advisors` SET `New`= 'false' WHERE `id` = '$id'";
+	$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
       }
 		?>
 		<form method="link" action="AdminUI.php">

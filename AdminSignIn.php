@@ -17,7 +17,8 @@ session_start();
 		<h2>Admin Sign In</h2>
 
     <?php
-      if($_SESSION["UserVal"] == true){
+      $id = $_SESSION["userID"];
+      if(empty($id)){		// Altered to check if username and password line up with a real advisor ID
         echo "<h3 style='color:red'>Invalid Username/Password combination</h3>";
       }
     ?>

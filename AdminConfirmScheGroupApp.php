@@ -1,7 +1,7 @@
 <?php
 session_start();
 $debug = false;
-include('CommonMethods.php');
+include('GetAdvisorData.php');
 $COMMON = new Common($debug);
 ?>
 
@@ -81,8 +81,8 @@ $COMMON = new Common($debug);
           }
           
           //get advisor id
-          $User = $_SESSION["UserN"];
-          $Pass = $_SESSION["PassW"];
+          $User = getUsername();
+          $Pass = getPassword();
           $sql = "select `id` from `Proj2Advisors` where `Username` = '$User' and `Password` = '$Pass'";
           $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
           $row = mysql_fetch_row($rs);

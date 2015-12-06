@@ -26,11 +26,11 @@ $debug = false;
 	$date = $_POST["date"];
 	$type = $_POST["type"];
 			
-	include('CommonMethods.php');
+	include('GetAdvisorData.php');
 	$COMMON = new Common($debug);
 
 
-      $User = $_SESSION["UserN"];
+      $User = getUsername();
 
       $sql = "SELECT `id`, `firstName`, `lastName` FROM `Proj2Advisors` WHERE `Username` = '$User'";
       $rs = $COMMON->executeQuery($sql, "Advising Appointments");
