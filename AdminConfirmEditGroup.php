@@ -27,8 +27,11 @@ $debug = false;
           $group = $_SESSION["GroupApp"];
           parse_str($group);
  
-          include('CommonMethods.php');
+	  include('ConvertMajor.php');
+          include('../CommonMethods.php');
           $COMMON = new Common($debug);
+
+// For deleting a selected appointment
 
           if($delete == true){
             echo("<h1>Removed Appointment</h1><br>");
@@ -39,6 +42,8 @@ $debug = false;
               AND `EnrolledNum` = '$row[2]'
               AND `Max` = '$row[3]'";
             $rs = $COMMON->executeQuery($sql, "Advising Appointments");
+
+// Retrieve students who would be affected by the removed appointment
 
             $stds = mysql_fetch_row($rs);
 	echo($stds[0]);
@@ -51,6 +56,7 @@ $debug = false;
             if($stds)
 	    {
 
+// Change those students' appointment statuses to cancelled
 
               foreach($stds as $element){
                 $element = trim($element);
@@ -69,12 +75,16 @@ $debug = false;
               }
             }
 
+// Delete appointments from DB
+
             $sql = "DELETE FROM `Proj2Appointments` WHERE `Time` = '$row[0]' 
               AND `AdvisorID` = '0' 
               AND `Major` = '$row[1]' 
               AND `EnrolledNum` = '$row[2]'
               AND `Max` = '$row[3]'";
             $rs = $COMMON->executeQuery($sql, "Advising Appointments");
+
+// Print details of cancel
 
             echo("Time: ". date('l, F d, Y g:i A', strtotime($row[0])). "<br>");
             echo("Majors included: ");
@@ -94,12 +104,19 @@ $debug = false;
               echo "<p style='color:red'>Students have been notified of the cancellation.</p>";
             }
           }
+
+// Or appointments were simply modified
+
           else{
+
+	// Print details of original appointment, then changed appointment
+
             echo("<h1>Changed Appointment</h1><br>");
 			echo("<h2>Previous Appointment:</h2>");
             echo("Time: ". date('l, F d, Y g:i A', strtotime($row[0])). "<br>");
             echo("Majors included: ");
             if($row[1]){
+	      $row[1] = ConvertMajor($row[1]);		// my code to convert DB majors to unabbreviated
               echo("$row[1]<br>"); 
             }
             else{
@@ -119,6 +136,8 @@ $debug = false;
             }
             echo("<b>Number of students enrolled: $row[2] </b><br>");
             echo("<b>Student limit: $limit</b>");
+
+// Update the DB with changes to the previous appointment
 
             $sql = "UPDATE `Proj2Appointments` SET `Max`='$limit' WHERE `Time` = '$row[0]' 
                     AND `AdvisorID` = '$0' AND `Major` = '$row[1]' 

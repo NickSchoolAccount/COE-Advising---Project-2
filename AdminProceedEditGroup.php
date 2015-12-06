@@ -23,21 +23,26 @@ session_start();
 		  <div class="field">
           <?php
             $debug = false;
-            include('CommonMethods.php');
+	    include('ConvertMajor.php');
+            include('../CommonMethods.php');
             $COMMON = new Common($debug);
 
             $group = $_SESSION["GroupApp"];
             parse_str($group);
+// Print current appt info
 
             echo("<form action=\"AdminConfirmEditGroup.php\" method=\"post\" name=\"Edit\">");
             echo("Time: ". date('l, F d, Y g:i A', strtotime($row[0])). "<br>");
             echo("Majors included: ");
             if($row[1]){
+	      $row[1] = ConvertMajor($row[1]);		// my code to convert DB majors to unabbreviated
               echo("$row[1]<br>"); 
             }
             else{
               echo("Available to all majors<br>"); 
             }
+// Allow specification of how many students can be enrolled in the given group appt.
+
             echo("Number of students enrolled: $row[2] <br>");
             echo("Student limit: ");
             echo("<input type=\"number\" id=\"stepper\" name=\"stepper\" min=\"$row[2]\" max=\"$row[3]\" value=\"$row[3]\" />");
