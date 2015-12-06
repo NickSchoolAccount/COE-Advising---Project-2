@@ -57,4 +57,18 @@ function getPassword() {
 	return $name;
 }	
 
+// This function assumes the programmer is retrieving whether the password and
+// confirm password fields match when entering a new advisor, rather than for
+// the current advisor with id $_SESSION["userID"]
+
+function getConfirmPassword() {
+	$COMMON = new Common($debug);
+
+	$sql = "SELECT * FROM `Proj2Advisors` WHERE `New` = 'true'";
+      	$rs = $COMMON->executeQuery($sql, "Advising Appointments");
+      	$row = mysql_fetch_row($rs);
+
+	return $row[5];
+}	
+
 ?>
